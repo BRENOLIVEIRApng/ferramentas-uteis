@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Comprovante - Ferramentas Úteis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <main>
+    <div class="container">
+      <div class="grid grid-2" style="align-items: start">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <span class="material-icons" style="color: var(--bg-card); font-size: 24px">auto_stories</span>
+            </div>
+            <h2 class="card-title">Como usar</h2>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem">
+            <div style="display: flex; gap: 1rem">
+              <div style="
+                    background: var(--primary);
+                    color: white;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    flex-shrink: 0;
+                  ">
+                1
+              </div>
+              <div>
+                <h4 style="font-weight: 600; margin-bottom: 0.25rem">
+                  Cole o JSON
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.875rem">
+                  Cole o retorno completo da API no campo de texto
+                </p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem">
+              <div style="
+                    background: var(--primary);
+                    color: white;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    flex-shrink: 0;
+                  ">
+                2
+              </div>
+              <div>
+                <h4 style="font-weight: 600; margin-bottom: 0.25rem">
+                  Clique em Gerar PDF
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.875rem">
+                  O sistema processará e gerará o comprovante
+                </p>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem">
+              <div style="
+                    background: var(--primary);
+                    color: white;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    flex-shrink: 0;
+                  ">
+                3
+              </div>
+              <div>
+                <h4 style="font-weight: 600; margin-bottom: 0.25rem">
+                  Baixe o arquivo
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.875rem">
+                  O PDF será baixado automaticamente
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-warning" style="margin-top: 1.5rem">
+            <p style="font-weight: 600; margin-bottom: 0.5rem">
+              <span class="material-icons" style="color: var(--warning); vertical-align: middle">warning</span>
+              Atenção
+            </p>
+            <p style="font-size: 0.875rem">
+              Cole o retorno completo da API, incluindo as aspas e parênteses.
+              O formato esperado começa com:
+              <code style="
+                    /* background: var(--warning); */
+                    padding: 0.125rem 0.375rem;
+                    border-radius: 4px;
+                  ">({'mensagem'...</code>
+            </p>
+          </div>
+
+          <div class="alert alert-success" style="margin-top: 1rem">
+            <p style="font-weight: 600; margin-bottom: 0.5rem">
+              <span class="material-icons"
+                style="color: var(--primary-dark); vertical-align: middle">tips_and_updates</span>
+              Dica
+            </p>
+            <p style="font-size: 0.875rem">
+              O PDF gerado terá fundo amarelo claro e formatação otimizada
+              para impressão, similar a um comprovante de pagamento real.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="form-group">
+              <label class="form-label">
+                <span class="material-icons" style="
+                      color: var(--primary-dark);
+                      font-size: 20px;
+                      vertical-align: middle;
+                    ">description</span>
+                JSON retornado pela API
+              </label>
+              <textarea id="jsonInput" class="form-textarea" style="min-height: 300px; font-size: 0.75rem" placeholder="Cole aqui o retorno completo da API, por exemplo:
+
+({'mensagem': [{'codigo_retorno': 200, 'mensagem': '\\r\\n FERRAMENTA CARD - TESTE...'..."></textarea>
+              <p class="form-help">
+                <span id="charCounter">0</span> caracteres inseridos
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 1rem">
+              <button id="generateBtn" class="btn btn-primary btn-block">
+                <span class="material-icons" style="
+                      font-size: 18px;
+                      vertical-align: middle;
+                      margin-right: 4px;
+                    ">
+                  search
+                </span>
+                Gerar PDF
+              </button>
+              <button id="clearBtn" class="btn btn-secondary">
+                <span class="material-icons" style="
+                      font-size: 18px;
+                      vertical-align: middle;
+                      margin-right: 4px;
+                    ">
+                  delete
+                </span>
+                Limpar
+              </button>
+            </div>
+
+            <div id="loading" class="loading">
+              <div class="spinner"></div>
+              <p style="font-weight: 600; margin-top: 0.5rem">
+                Gerando PDF...
+              </p>
+              <p style="font-size: 0.875rem; color: var(--text-secondary)">
+                Processando dados e criando comprovante
+              </p>
+            </div>
+
+            <div id="result" class="hidden" style="margin-top: 1.5rem"></div>
+          </div>
+
+          <div class="card" style="margin-top: 1.5rem">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem">
+              <span class="material-icons" style="
+                    font-size: 18px;
+                    vertical-align: middle;
+                    margin-right: 4px;
+                  ">
+                description
+              </span>
+              Exemplo de JSON válido
+            </h3>
+            <div style="
+                  background: var(--bg-main);
+                  padding: 1rem;
+                  border-radius: 8px;
+                  overflow-x: auto;
+                ">
+              <pre style="
+                    font-size: 0.75rem;
+                    font-family: monospace;
+                    white-space: pre-wrap;
+                  ">
+({'mensagem': [{'codigo_retorno': 200, 'mensagem': '\\r\\n            FERRAMENTA CARD - TESTE         \\r\\n          PROTOCOLO 1234567890\\r\\n02/09/2025               09:15\\r\\n...', 'codigo_autorizacao': '123456'}]}, 200)</pre>
+            </div>
+            <p style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  margin-top: 0.75rem;
+                ">
+              Este é apenas um exemplo reduzido. Cole o retorno completo que
+              você receber da API.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/components/theme.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/loader.js"></script>
+  <script src="js/modules/comprovante.js"></script>
+  <script>
+    const comprovanteModule = new ComprovanteModule();
+  </script>
+</body>
+
+</html>

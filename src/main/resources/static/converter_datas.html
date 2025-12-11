@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Datas - Ferramentas Úteis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <main>
+        <div class="container">
+            <div class="grid grid-2" style="align-items: start;">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <span class="material-icons"
+                                style="color: var(--bg-card); font-size: 24px;">auto_stories</span>
+                        </div>
+                        <h2 class="card-title">Como usar</h2>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; gap: 1rem;">
+                            <div
+                                style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                1</div>
+                            <div>
+                                <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Cole suas datas</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">Cole as datas no formato
+                                    americano, uma por linha</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <div
+                                style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                2</div>
+                            <div>
+                                <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Clique em Converter</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">O sistema processará todas
+                                    as datas</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <div
+                                style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                3</div>
+                            <div>
+                                <h4 style="font-weight: 600; margin-bottom: 0.25rem;">Copie o resultado</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">Use o botão "Copiar" para
+                                    copiar as datas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success" style="margin-top: 1.5rem;">
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">
+                            <span class="material-icons"
+                                style="color: var (--primary); vertical-align: middle;">list_alt</span>
+                            Exemplo
+                        </p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>
+                                <p style="font-weight: 600; font-size: 0.875rem;">Entrada:</p>
+                                <div style="font-family: monospace; font-size: 0.875rem;">
+                                    <p>5/17/2001</p>
+                                    <p>4/16/1997</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p style="font-weight: 600; font-size: 0.875rem;">Saída:</p>
+                                <div style="font-family: monospace; font-size: 0.875rem; color: var(--success);">
+                                    <p>17/05/2001</p>
+                                    <p>16/04/1997</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="material-icons" style="color: var(--primary);">calendar_month</span>
+                                Datas para Converter (formato: MM/DD/YYYY)
+                            </label>
+                            <textarea id="dateInput" class="form-textarea" placeholder="Cole suas datas aqui, uma por linha:
+5/17/2001
+4/16/1997
+7/6/1989"></textarea>
+                            <p class="form-help"><span id="lineCounter">0</span> linhas inseridas</p>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem;">
+                            <button id="convertBtn" class="btn btn-primary btn-block">
+                                <span class="material-icons"
+                                    style="font-size: 18px; vertical-align: middle;">cached</span>
+                                Converter Datas</button>
+                            <button id="clearBtn" class="btn btn-secondary">
+                                <span class="material-icons"
+                                    style="font-size: 18px; vertical-align: middle;">delete</span>
+                                Limpar</button>
+                        </div>
+
+                        <div id="loading" class="loading">
+                            <div class="spinner"></div>
+                            <p>Convertendo...</p>
+                        </div>
+                    </div>
+
+                    <div id="result" class="card hidden" style="margin-top: 1.5rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <label class="form-label">
+                                <span class="material-icons" style="color: var(--primary);">check</span>
+                                Datas Convertidas</label>
+                            <button id="copyBtn" class="btn btn-primary">
+                                <span class="material-icons"
+                                    style="font-size: 18px; vertical-align: middle;">content_copy</span>
+                                Copiar Tudo</button>
+                        </div>
+                        <textarea id="dateOutput" class="form-textarea" readonly
+                            style="background: var(--bg-main);"></textarea>
+
+                        <div class="stats-grid" style="margin-top: 1rem;">
+                            <div class="stat-card success">
+                                <p class="stat-label">Convertidas</p>
+                                <p class="stat-value" id="totalConvertidas">0</p>
+                            </div>
+                            <div class="stat-card error">
+                                <p class="stat-label">Erros</p>
+                                <p class="stat-value" id="totalErros">0</p>
+                            </div>
+                        </div>
+
+                        <div id="errorArea" class="alert alert-error hidden" style="margin-top: 1rem;">
+                            <p style="font-weight: 600; margin-bottom: 0.5rem;">
+                                <span class="material-icons"
+                                    style="font-size: 18px; vertical-align: middle;">warning</span>
+                                Erros encontrados:
+                            </p>
+                            <ul id="errorList" style="margin-left: 1.5rem;"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/components/theme.js"></script>
+    <script src="js/components/toast.js"></script>
+    <script src="js/components/loader.js"></script>
+    <script src="js/modules/date.js"></script>
+    <script>const dateModule = new DateModule();</script>
+</body>
+
+</html>
