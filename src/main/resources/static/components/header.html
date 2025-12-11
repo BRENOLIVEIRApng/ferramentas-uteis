@@ -1,0 +1,294 @@
+<!-- ===== HEADER MODERNO ===== -->
+<header class="modern-header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- Logo e Título -->
+            <div class="header-brand">
+                <span class="material-symbols-outlined brand-icon">settings</span>
+                <div class="brand-text">
+                    <h1 id="pageTitle">Ferramentas Úteis</h1>
+                    <p id="pageSubtitle">Sistema de validação e conversão</p>
+                </div>
+            </div>
+
+            <!-- Navegação Desktop -->
+            <nav class="header-nav desktop-nav">
+                <a href="index.html" class="nav-link" data-page="index">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Início</span>
+                </a>
+                <a href="validar_cpf.html" class="nav-link" data-page="validar_cpf">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span>CPF</span>
+                </a>
+                <a href="converter_datas.html" class="nav-link" data-page="converter_datas">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span>Datas</span>
+                </a>
+                <a href="formatar_csv.html" class="nav-link" data-page="formatar_csv">
+                    <span class="material-symbols-outlined">table_chart</span>
+                    <span>CSV</span>
+                </a>
+                <a href="gerar_comprovante.html" class="nav-link" data-page="gerar_comprovante">
+                    <span class="material-symbols-outlined">description</span>
+                    <span>PDF</span>
+                </a>
+            </nav>
+
+            <!-- Ações do Header -->
+            <div class="header-actions">
+                <button id="themeToggle" class="action-btn" title="Alternar tema">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <button id="mobileMenuToggle" class="action-btn mobile-only" title="Menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html" class="mobile-nav-link">
+                <span class="material-symbols-outlined">home</span>
+                <span>Início</span>
+            </a>
+            <a href="validar_cpf.html" class="mobile-nav-link">
+                <span class="material-symbols-outlined">check_circle</span>
+                <span>Validar CPF</span>
+            </a>
+            <a href="converter_datas.html" class="mobile-nav-link">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span>Converter Datas</span>
+            </a>
+            <a href="formatar_csv.html" class="mobile-nav-link">
+                <span class="material-symbols-outlined">table_chart</span>
+                <span>Formatar CSV</span>
+            </a>
+            <a href="gerar_comprovante.html" class="mobile-nav-link">
+                <span class="material-symbols-outlined">description</span>
+                <span>Gerar Comprovante</span>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<style>
+/* ====================================
+   CORREÇÃO PRINCIPAL — FAZ O MENU APARECER
+==================================== */
+.modern-header {
+    background: var(--bg-card);
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    overflow: visible !important;
+}
+
+.modern-header .container {
+    position: relative;
+    overflow: visible !important;
+}
+
+/* ====================================
+   HEADER E NAV
+==================================== */
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    gap: 2rem;
+}
+
+/* Brand */
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.brand-icon {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.brand-text h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.brand-text p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Navegação Desktop */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.nav-link.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Ações */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* ====================================
+   MENU MOBILE — ATIVO APENAS EM TELAS PEQUENAS
+==================================== */
+.mobile-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    z-index: 9999;
+}
+
+.mobile-nav.active {
+    display: flex !important;
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ====================================
+   RESPONSIVE
+==================================== */
+@media (max-width: 968px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-only {
+        display: flex;
+    }
+
+    .brand-text p {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .header-wrapper {
+        padding: 0.75rem 0;
+    }
+}
+</style>
+
+<script>
+(function () {
+
+    /** 1. Ativa o link correto */
+    function setActiveLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const map = {
+            'index.html': 'index',
+            'validar_cpf.html': 'validar_cpf',
+            'converter_datas.html': 'converter_datas',
+            'formatar_csv.html': 'formatar_csv',
+            'gerar_comprovante.html': 'gerar_comprovante'
+        };
+
+        const link = document.querySelector(`.nav-link[data-page="${map[currentPage]}"]`);
+        if (link) link.classList.add('active');
+    }
+
+    /** 2. Alterna menu mobile */
+    function initMobileMenu() {
+        const toggle = document.getElementById('mobileMenuToggle');
+        const menu = document.getElementById('mobileNav');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            toggle.querySelector('.material-symbols-outlined').textContent =
+                menu.classList.contains('active') ? 'close' : 'menu';
+        });
+    }
+
+    /** 3. Fecha ao clicar */
+    function initMobileLinks() {
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobileNav');
+                const toggle = document.getElementById('mobileMenuToggle');
+                menu.classList.remove('active');
+                toggle.querySelector('.material-symbols-outlined').textContent = 'menu';
+            });
+        });
+    }
+
+    /** Inicializar */
+    document.addEventListener('DOMContentLoaded', () => {
+        setActiveLink();
+        initMobileMenu();
+        initMobileLinks();
+    });
+
+})();
+</script>
