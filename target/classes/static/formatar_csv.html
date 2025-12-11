@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formatador de CSV - Ferramentas Úteis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <main>
+    <div class="container">
+      <div class="grid grid-2" style="align-items: start">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <span class="material-icons" style="color: var(--bg-card); font-size: 24px">auto_stories</span>
+            </div>
+            <h2 class="card-title">Como usar</h2>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem">
+            <div style="display: flex; gap: 1rem">
+              <div style="
+                    background: var(--primary);
+                    color: white;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                  ">
+                1
+              </div>
+              <div>
+                <h4 style="font-weight: 600; margin-bottom: 0.25rem">
+                  Selecione o CSV
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.875rem">
+                  Envie o arquivo em formato UTF-8
+                </p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 1rem">
+              <div style="
+                    background: var(--primary);
+                    color: white;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                  ">
+                2
+              </div>
+              <div>
+                <h4 style="font-weight: 600; margin-bottom: 0.25rem">
+                  Processar
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.875rem">
+                  O sistema valida CPF, datas e remove colunas vazias
+                </p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 1rem">
+              <div style="
+                    background: var(--primary);
+                    color: white;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                  ">
+                3
+              </div>
+              <div>
+                <h4 style="font-weight: 600; margin-bottom: 0.25rem">
+                  Baixe o arquivo
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.875rem">
+                  CSV pronto para importação
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-warning" style="margin-top: 1.5rem">
+            <p style="font-weight: 600; margin-bottom: 0.5rem">
+              <span class="material-icons" style="color: var(--warning); vertical-align: middle">warning</span>
+              Atenção
+            </p>
+            <p style="font-size: 0.875rem">
+              Apenas colunas com valores serão mantidas. Certifique-se de que
+              os CPFs sejam válidos.
+            </p>
+          </div>
+
+          <div class="alert alert-success" style="margin-top: 1rem">
+            <p style="font-weight: 600; margin-bottom: 0.5rem">
+              <span class="material-icons"
+                style="color: var(--primary-dark); vertical-align: middle">tips_and_updates</span>
+              Dica
+            </p>
+            <p style="font-size: 0.875rem">
+              Campos de nome podem conter espaços. Evite caracteres especiais.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <form id="uploadForm">
+              <input type="file" id="fileInput" accept=".csv" style="display: none" />
+
+              <div id="uploadArea" class="file-upload-area">
+                <div class="file-upload-icon">
+                  <span class="material-icons" style="color: var(--primary); font-size: 48px">upload_file</span>
+                </div>
+                <p class="file-upload-text">
+                  Clique para selecionar ou arraste o arquivo CSV
+                </p>
+                <p class="file-upload-hint">Tamanho máximo: 10MB</p>
+              </div>
+
+              <ul id="fileList" class="file-list hidden"></ul>
+
+              <div id="progress" class="hidden" style="margin-top: 1.5rem">
+                <div class="progress-label">
+                  <span>Processando arquivo...</span>
+                  <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.5rem">
+                <span class="material-icons" style="font-size: 18px; vertical-align: middle">table_chart</span>
+                Processar CSV
+              </button>
+            </form>
+
+            <div id="loading" class="loading">
+              <div class="spinner"></div>
+              <p>Processando...</p>
+            </div>
+
+            <div id="result" class="hidden" style="margin-top: 1.5rem"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/components/theme.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/loader.js"></script>
+  <script src="js/components/progress.js"></script>
+  <script src="js/modules/csv.js"></script>
+  <script>
+    const csvModule = new CsvModule();
+  </script>
+</body>
+
+</html>

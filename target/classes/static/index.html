@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferramentas Úteis - Sistema de Validação e Conversão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicoon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+  <main>
+    <div class="container">
+      <div class="card">
+        <div class="alert alert-info">
+          <h3 style="
+                font-size: 1.125rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+              ">
+            <span class="material-icons"
+              style="color: #1e40af; font-size: 24px; vertical-align: middle">auto_stories</span>
+            Como usar
+          </h3>
+          <p>
+            Escolha uma das ferramentas abaixo clicando no card
+            correspondente. Cada ferramenta possui instruções específicas de
+            como inserir os dados e obter os resultados.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+
+        <a href="validar_cpf.html" class="feature-card">
+          <div class="feature-card-icon">
+            <span class="material-icons" style="color: white">check_circle</span>
+          </div>
+          <h3>Validador de CPF</h3>
+          <p>
+            Verifica se um CPF é válido através do cálculo dos dígitos
+            verificadores
+          </p>
+          <div class="feature-example">
+            <p><strong>Entrada:</strong> 123.456.789-09</p>
+            <p><strong>Saída:</strong> Válido ou Inválido</p>
+          </div>
+          <div class="feature-link">
+            <span>Acessar ferramenta</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a href="converter_datas.html" class="feature-card">
+          <div class="feature-card-icon">
+            <span class="material-icons" style="color: white">calendar_month</span>
+          </div>
+          <h3>Conversor de Datas</h3>
+          <p>
+            Converte datas do formato americano (MM/DD/YYYY) para o formato
+            brasileiro (DD/MM/YYYY)
+          </p>
+          <div class="feature-example">
+            <p><strong>Entrada:</strong> 5/17/2001</p>
+            <p><strong>Saída:</strong> 17/05/2001</p>
+          </div>
+          <div class="feature-link">
+            <span>Acessar ferramenta</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a href="formatar_csv.html" class="feature-card">
+          <div class="feature-card-icon">
+            <span class="material-icons" style="color: white">table_chart</span>
+          </div>
+          <h3>Formatador CSV</h3>
+          <p>
+            Valida e limpa dados de planilhas CSV para uso em sistemas
+            internos
+          </p>
+          <div class="feature-example">
+            <p><strong>Entrada:</strong> Arquivo CSV</p>
+            <p><strong>Saída:</strong> CSV formatado</p>
+          </div>
+          <div class="feature-link">
+            <span>Acessar ferramenta</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a href="gerar_comprovante.html" class="feature-card">
+          <div class="feature-card-icon">
+            <span class="material-icons" style="color: white">description</span>
+          </div>
+          <h3>Comprovante PDF</h3>
+          <p>
+            Transforma o JSON recebido da API em um comprovante PDF formatado
+            e pronto para uso
+          </p>
+          <div class="feature-example">
+            <p><strong>Entrada:</strong> JSON da API</p>
+            <p><strong>Saída:</strong> PDF formatado</p>
+          </div>
+          <div class="feature-link">
+            <span>Acessar ferramenta</span>
+            <span>→</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card" style="margin-top: 2rem">
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem">
+          <span class="material-icons" style="
+                color: var(--info);
+                font-size: 28px;
+                vertical-align: middle;
+              ">info</span>
+          Informações Importantes
+        </h3>
+        <div class="grid grid-3">
+          <div style="display: flex; gap: 0.75rem">
+            <span class="material-icons" style="color: var(--success); font-size: 1.5rem">check</span>
+            <p>Interface moderna e responsiva para todos os dispositivos</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem">
+            <span class="material-icons" style="color: var(--success); font-size: 1.5rem">check</span>
+            <p>Processamento rápido e eficiente dos dados</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem">
+            <span class="material-icons" style="color: var(--success); font-size: 1.5rem">check</span>
+            <p>Validações rigorosas e mensagens claras de erro</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/components/theme.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/loader.js"></script>
+</body>
+
+</html>
