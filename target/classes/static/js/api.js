@@ -8,8 +8,8 @@
  *              incluindo métodos para CPF, datas, CSV e geração de comprovantes.
  * @author      BRENOLIVEIRApng (Breno Oliveira)
  * @created     09/12/2025
- * @modified    09/12/2025
- * @version     2.0.0
+ * @modified    18/12/2025
+ * @version     2.1.0
  * 
  * @module      ApiClient
  * 
@@ -22,18 +22,32 @@
  * - Este módulo manipula dados localmente sem enviar para servidores externos
  * - Todos os dados são processados no navegador/servidor local
  * - Desenvolvido para auxiliar no trabalho diário com dados sensíveis
+ * - Detecta automaticamente ambiente local ou produção (Render)
  * ============================================================================
  */
 
-const API_BASE_URL = 'http://localhost:8080/api';
+// Detecta automaticamente o ambiente
+const getApiBaseUrl = () => {
+
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:8080';
+    }
+
+    return 'https://ferramentas-uteis.onrender.com';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 class ApiClient {
     constructor(baseUrl = API_BASE_URL) {
         this.baseUrl = baseUrl;
+        console.log('API Base URL:', this.baseUrl);
     }
 
     async request(endpoint, options = {}) {
         const url = `${this.baseUrl}${endpoint}`;
+        console.log('📡 Request:', url);
+        
         const config = {
             headers: {
                 'Content-Type': 'application/json',
